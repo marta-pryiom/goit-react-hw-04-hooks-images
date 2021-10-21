@@ -11,7 +11,9 @@ export default function Modal({ children, onClose }) {
       }
     };
     window.addEventListener('keydown', handleKeyDown);
-    window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [onClose]);
 
   const handleBackdrop = e => {
